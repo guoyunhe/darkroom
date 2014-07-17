@@ -62,7 +62,7 @@ public class AppWindow {
 		
 		toggleButton = new JToggleButton("关进小黑屋");
 		toggleButton.setBounds(90, 60, 120, 40);
-		toggleButton.setFont(new Font("Arial", Font.PLAIN, 16));
+		toggleButton.setFont(new Font("Dialog", Font.PLAIN, 16));
 		toggleButton.setFocusPainted(false);
 		toggleButton.setBackground(Color.BLACK);
 		toggleButton.setForeground(Color.WHITE);
