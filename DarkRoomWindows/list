@@ -1,0 +1,16 @@
+#DarkRoomStart
+# Social Network
+127.0.0.1	facebook.com
+127.0.0.1	plus.google.com
+127.0.0.1	qzone.qq.com
+127.0.0.1	renren.com
+127.0.0.1	twitter.com
+127.0.0.1	weibo.com
+# Online Video
+127.0.0.1	bilibili.tv
+127.0.0.1	letv.com
+127.0.0.1	tudou.com
+127.0.0.1	youku.com
+127.0.0.1	youtube.com
+# Online Game
+#DarkRoomEnd

@@ -1,0 +1,3 @@
+# A test hosts file that you can run without root permission
+# You should edit HostsIO.java change the location of hosts from 
+# "/etc/hosts" to "hosts"
