@@ -23,16 +23,55 @@ public class HostsIO {
 	
 	private void init() {
 		// File objects
-		hosts = new File("hosts"); // TODO should be "/etc/hosts"
-		list = new File("list"); // TODO should be "/usr/share/darkroom/list"
+		hosts = new File("/etc/hosts"); // use "hosts" when test
+										// avoid root permission and effects on your system 
+		list = new File("list");
 		// Create temp file
 		try {
 			temp = File.createTempFile("darkroom-host-", "");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		temp.deleteOnExit();
+	}
+	
+	public boolean readHosts() {
+		boolean isLocked = false;
+		
+		String line = "";
+		
+		// Buffered reader and writer
+		try {
+			bufHostsIn = new BufferedReader(new FileReader(hosts));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		while(true) {
+			// Read original hosts file
+			try {
+				line = bufHostsIn.readLine();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			if(line==null) {
+				break;
+			}
+			
+			if(line.startsWith("#DarkRoomStart")) {
+				isLocked = true;
+				break;
+			}
+		}
+		
+		// Close file IO
+		try {
+			bufHostsIn.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return isLocked;
 	}
 	
 	public void writeHosts(boolean lock) {
@@ -50,7 +89,7 @@ public class HostsIO {
 			e.printStackTrace();
 		}
 		
-		do {
+		while(true) {
 			// Read original hosts file
 			try {
 				line = bufHostsIn.readLine();
@@ -74,16 +113,14 @@ public class HostsIO {
 				}
 			}
 			
-			
-			if(line.startsWith("#DarkRoomE")) {
+			if(line.startsWith("#DarkRoomEnd")) {
 				skip = false;
-			}
-			
-		} while(line != null);
+			}	
+		}
 		
 		// Add lock
 		if(lock) {
-			do {
+			while(true) {
 				// Read block list file
 				try {
 					line = bufListIn.readLine();
@@ -100,7 +137,7 @@ public class HostsIO {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-			} while(line != null);
+			}
 		}
 		// Close file IO
 		try {
@@ -121,7 +158,7 @@ public class HostsIO {
 		
 		// Transfer content of temp file to hosts
 		line = null;
-		do {
+		while(true) {
 			// Read temp file
 			try {
 				line = bufTempIn.readLine();
@@ -139,7 +176,7 @@ public class HostsIO {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		} while (line != null);
+		}
 		
 		// Close file IO
 		try {

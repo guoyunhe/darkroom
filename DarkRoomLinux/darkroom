@@ -1,2 +1,7 @@
 #!/bin/bash
-java -jar darkroom.jar # Path should be /usr/lib/darkroom/darkroom.jar
+# Absolute path to this script, e.g. /home/user/bin/foo.sh
+SCRIPT=$(readlink -f "$0")
+# Absolute path this script is in, thus /home/user/bin
+SCRIPTPATH=$(dirname "$SCRIPT")
+# Run Java GUI application as root, xdg-su may chage the current path, so we need cd command
+xdg-su -c "cd ""$SCRIPTPATH"" && java -jar darkroom.jar"

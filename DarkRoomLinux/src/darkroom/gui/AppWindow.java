@@ -6,15 +6,11 @@ import java.awt.Font;
 
 import javax.swing.JFrame;
 
-import java.awt.BorderLayout;
-
 import javax.swing.JToggleButton;
-import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
 import darkroom.io.HostsIO;
 
-import java.awt.Window.Type;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -22,7 +18,7 @@ public class AppWindow {
 
 	private JFrame mainFrame;
 	private JToggleButton toggleButton;
-	private HostsIO hostio;
+	private HostsIO hostsio;
 
 	/**
 	 * Launch the application.
@@ -51,13 +47,15 @@ public class AppWindow {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		hostio = new HostsIO();
+		hostsio = new HostsIO();
+		
+		boolean isLocked = hostsio.readHosts();
 		
 		mainFrame = new JFrame();
-		mainFrame.setAlwaysOnTop(true);
 		mainFrame.setTitle("小黑屋/真的要来不及了！");
 		mainFrame.setBounds(20, 20, 300, 200);
 		mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		mainFrame.setResizable(false);
 		
 		mainFrame.getContentPane().setBackground(Color.WHITE);
 		mainFrame.getContentPane().setLayout(null);
@@ -73,7 +71,12 @@ public class AppWindow {
 		mainFrame.getContentPane().add(toggleButton);
 		
 		// TODO Check if hosts is dark
-		// toggleButton.setSelected(true);
+		if(isLocked) {
+			toggleButton.setSelected(true);
+			mainFrame.getContentPane().setBackground(Color.BLACK);
+			toggleButton.setForeground(Color.BLACK);
+			toggleButton.setText("救出小黑屋");
+		}
 	}
 	
 	MouseListener listener = new MouseListener(){
@@ -88,7 +91,7 @@ public class AppWindow {
 				mainFrame.getContentPane().setBackground(Color.BLACK);
 				toggleButton.setForeground(Color.BLACK);
 				toggleButton.setText("救出小黑屋");
-				hostio.writeHosts(true);
+				hostsio.writeHosts(true);
 			} else {
 				// Selected -> Unselected
 				// Dark -> Light
@@ -96,7 +99,7 @@ public class AppWindow {
 				mainFrame.getContentPane().setBackground(Color.WHITE);
 				toggleButton.setForeground(Color.WHITE);
 				toggleButton.setText("关进小黑屋");
-				hostio.writeHosts(false);
+				hostsio.writeHosts(false);
 			}
 		}
 
