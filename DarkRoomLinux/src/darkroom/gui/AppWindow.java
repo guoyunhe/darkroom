@@ -10,6 +10,9 @@ import java.awt.BorderLayout;
 
 import javax.swing.JToggleButton;
 import javax.swing.JPanel;
+import javax.swing.WindowConstants;
+
+import darkroom.io.HostsIO;
 
 import java.awt.Window.Type;
 import java.awt.event.MouseEvent;
@@ -19,6 +22,7 @@ public class AppWindow {
 
 	private JFrame mainFrame;
 	private JToggleButton toggleButton;
+	private HostsIO hostio;
 
 	/**
 	 * Launch the application.
@@ -47,10 +51,13 @@ public class AppWindow {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		hostio = new HostsIO();
+		
 		mainFrame = new JFrame();
 		mainFrame.setAlwaysOnTop(true);
 		mainFrame.setTitle("小黑屋/真的要来不及了！");
 		mainFrame.setBounds(20, 20, 300, 200);
+		mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		
 		mainFrame.getContentPane().setBackground(Color.WHITE);
 		mainFrame.getContentPane().setLayout(null);
@@ -81,6 +88,7 @@ public class AppWindow {
 				mainFrame.getContentPane().setBackground(Color.BLACK);
 				toggleButton.setForeground(Color.BLACK);
 				toggleButton.setText("救出小黑屋");
+				hostio.writeHosts(true);
 			} else {
 				// Selected -> Unselected
 				// Dark -> Light
@@ -88,6 +96,7 @@ public class AppWindow {
 				mainFrame.getContentPane().setBackground(Color.WHITE);
 				toggleButton.setForeground(Color.WHITE);
 				toggleButton.setText("关进小黑屋");
+				hostio.writeHosts(false);
 			}
 		}
 
