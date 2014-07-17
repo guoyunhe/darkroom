@@ -1,0 +1,2 @@
+#!/bin/bash
+java -jar darkroom.jar # Path should be /usr/lib/darkroom/darkroom.jar
