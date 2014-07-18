@@ -7,11 +7,11 @@ DarkRoom will add block list to hosts file of system. Some domains of social net
 
 _unlocked status_
 
-![Unlocked Status](screenshot-unlocked.png)
+![Unlocked Status](http://guoyunhe.me/app/darkroom/screenshot-unlocked.png)
 
 _locked status_
 
-![Locked Status](screenshot-locked.png)
+![Locked Status](http://guoyunhe.me/app/darkroom/screenshot-locked.png)
 
 This application is written in Java. Now it supports *Linux* and *Windows* platform.
 
