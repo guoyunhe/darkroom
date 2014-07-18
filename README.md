@@ -5,6 +5,14 @@ Block social network and other things that may waste your time when you are work
 
 DarkRoom will add block list to hosts file of system. Some domains of social network, shopping web sites, online video, etc. will be forbidden.
 
+_unlocked status_
+
+![Unlocked Status](screenshot-unlocked.png)
+
+_locked status_
+
+![Locked Status](screenshot-locked.png)
+
 This application is written in Java. Now it supports *Linux* and *Windows* platform.
 
 Download & Run
