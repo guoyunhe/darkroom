@@ -38,6 +38,17 @@ If the black list is existing in your hosts files, the window will be black, (me
 
 When the program exit, the hosts file will stay in the last status. If you want to unlock, please click the button before quit program.
 
+We Have Blocked
+---------------
+
+1. Social Network (Facebook, Twitter, 微博, 人人, QQ空间, etc.)
+2. Forum & Community (Reddit, 百度贴吧, 豆瓣, etc.)
+3. Shopping Web Sites (Amazon, 淘宝, 京东, 腾讯拍拍, 易讯, etc.)
+4. Online Video (YouTube，优酷, 土豆, 哔哩哔哩, etc.)
+5. Novel Reading (起点, 晋江, 潇湘, 红袖, etc.)
+
+and will block more than you expect.
+
 Difference between Linux and Windows versions
 ---------------------------------------------
 
