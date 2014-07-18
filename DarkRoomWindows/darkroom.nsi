@@ -1,22 +1,23 @@
-﻿; Java Launcher
-;--------------
+﻿; Java Launcher Utilize NSIS
 
-; You want to change the below lines   
-Name "小黑屋"   
-Caption "小黑屋安装程序"    
-;Icon "iconfile.ico"    
-OutFile "DarkRoom.exe"
+; EXE description
+Name "DarkRoom"
+Caption ""
+Icon "icon.ico"
+OutFile "darkroom.exe"
 
+; Run as admin
 ; param below can be user, admin    
 RequestExecutionLevel admin
 
+; Hide the install window
 SilentInstall silent
 AutoCloseWindow true
 ShowInstDetails show
 
-Section ""    
-  ; command to execute    
+Section "Execute Java"
+  ; command to execute java
   StrCpy $0 "javaw -jar darkroom.jar"
-  SetOutPath $EXEDIR    
-  Exec $0    
+  SetOutPath $EXEDIR
+  Exec $0
 SectionEnd
