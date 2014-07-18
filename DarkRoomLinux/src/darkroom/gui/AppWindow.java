@@ -3,9 +3,10 @@ package darkroom.gui;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
-
 import javax.swing.JToggleButton;
 import javax.swing.WindowConstants;
 
@@ -18,6 +19,7 @@ public class AppWindow {
 
 	private JFrame mainFrame;
 	private JToggleButton toggleButton;
+	private Image iconImage;
 	private HostsIO hostsio;
 
 	/**
@@ -54,6 +56,8 @@ public class AppWindow {
 		mainFrame = new JFrame();
 		mainFrame.setTitle("小黑屋/真的要来不及了！");
 		mainFrame.setBounds(20, 20, 300, 200);
+		iconImage = Toolkit.getDefaultToolkit().getImage("icon.png");
+		mainFrame.setIconImage(iconImage);
 		mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		mainFrame.setResizable(false);
 		
@@ -87,7 +91,6 @@ public class AppWindow {
 			if(toggleButton.isSelected()) {
 				// Unselected -> Selected
 				// Light -> Dark
-				System.out.println("Dark!");
 				mainFrame.getContentPane().setBackground(Color.BLACK);
 				toggleButton.setForeground(Color.BLACK);
 				toggleButton.setText("救出小黑屋");
@@ -95,7 +98,6 @@ public class AppWindow {
 			} else {
 				// Selected -> Unselected
 				// Dark -> Light
-				System.out.println("Light~");
 				mainFrame.getContentPane().setBackground(Color.WHITE);
 				toggleButton.setForeground(Color.WHITE);
 				toggleButton.setText("关进小黑屋");

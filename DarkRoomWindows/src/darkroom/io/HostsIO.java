@@ -166,7 +166,6 @@ public class HostsIO {
 				e.printStackTrace();
 			}
 			// Write into hosts file
-			System.out.println(line);
 			if(line==null) {
 				break;
 			}
